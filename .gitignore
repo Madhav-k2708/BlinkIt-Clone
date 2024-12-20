@@ -1,0 +1,5 @@
+
+# Manual Changes
+node_modules
+
+*.env
