@@ -17,12 +17,7 @@ import orderRouter from "./route/orderRoute.js";
 
 
 const app = express();
-app.use(
-  cors({
-    credentials: true,
-    origin: process.env.FRONTEND_URL,
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 app.use(cookieParser());
