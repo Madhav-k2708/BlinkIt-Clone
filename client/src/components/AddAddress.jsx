@@ -1,4 +1,4 @@
-import React from "react";
+import React,{memo} from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { IoMdClose } from "react-icons/io";
@@ -129,4 +129,4 @@ const AddAddress = ({ close }) => {
   );
 };
 
-export default AddAddress;
+export default memo(AddAddress);

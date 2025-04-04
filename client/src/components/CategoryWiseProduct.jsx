@@ -96,6 +96,7 @@ const CategoryWiseProduct = ({ id, name }) => {
             return <CardProduct key={product._id + index} data={product} />;
           })}
         </div>
+
         <div className="w-full left-0 right-0 container mx-auto  shadow-black  px-2 absolute hidden lg:flex justify-between  ">
           <button
             onClick={handleScrollLeft}

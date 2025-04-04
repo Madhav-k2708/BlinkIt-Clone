@@ -50,9 +50,7 @@ const ProductListPage = () => {
         setTotalPage(responseData.totalCount);
       }
     } catch (error) {
-      AxiosToastError(error)
-
-      
+      AxiosToastError(error);
     } finally {
       setLoading(false);
     }
@@ -77,38 +75,39 @@ const ProductListPage = () => {
     <section className="sticky top-24 lg:top-20">
       <div className="container sticky top-24  mx-auto grid grid-cols-[90px,1fr]  md:grid-cols-[200px,1fr] lg:grid-cols-[280px,1fr]">
         {/**sub category **/}
-        <div className=" min-h-[88vh] max-h-[88vh] overflow-y-scroll  grid gap-1 shadow-md customscrollbar bg-white py-2">
+        <div className=" min-h-[88vh] max-h-[88vh] overflow-y-scroll  flex flex-col gap-1 shadow-md customscrollbar bg-white py-2">
           {displaySubCategory.map((s, index) => {
-           const link = `/${validURLConverted(s?.category[0]?.name)}-${s?.category[0]?._id}/${validURLConverted(s.name)}-${s._id}`
+            const link = `/${validURLConverted(s?.category[0]?.name)}-${
+              s?.category[0]?._id
+            }/${validURLConverted(s.name)}-${s._id}`;
 
             return (
               <Link
-              key={index}
+                key={index}
                 to={link}
-                className={`w-full p-2 lg:flex items-center lg:w-full lg:h-16 box-border lg:gap-4 border-b 
+                className={`w-full p-2 lg:flex flex-col items-center lg:w-full lg:h-fit box-border lg:gap-4 border-b 
                 hover:bg-green-100 cursor-pointer 
                 ${subCategoryId === s._id ? "bg-green-300" : ""}
               `}
               >
                 <div
-                  className={`w-fit max-w-28 mx-auto lg:mx-0 bg-white rounded  box-border hover:bg-green-100
+                  className={`flex flex-col items-center text-center gap-8 w-fit max-w-28 mx-auto lg:mx-0 bg-white rounded  box-border hover:bg-green-100
                     ${subCategoryId === s._id ? "bg-green-300" : ""}
                     `}
                 >
                   <img
                     src={s.image}
                     alt="subCategory"
-                    className=" w-14 lg:h-14 lg:w-12 h-full object-scale-down"
+                    className=" w-10 lg:w-14 lg:h-14 h-full object-scale-down"
                   />
+                  <p className="-mt-6 text-center lg:mt-0 text-xs lg:text-base">
+                    {s.name}
+                  </p>
                 </div>
-                <p className="-mt-6 lg:mt-0 text-xs text-center lg:text-left lg:text-base">
-                  {s.name}
-                </p>
               </Link>
             );
           })}
         </div>
-
 
         {/**Product **/}
         <div className="sticky top-20 Productscrollbar">

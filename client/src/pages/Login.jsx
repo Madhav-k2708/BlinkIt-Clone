@@ -69,12 +69,12 @@ const Login = () => {
   return (
     <section className="w-full container mx-auto mt-10 px-2 ">
       <div className="bg-white my-4 w-full max-w-lg mx-auto rounded p-10 ">
-        <p className="text-xl text-secondary-200 border-b-2 border-secondary-200 ms:text-sm ">
+        <p className="text-sm sm:text-xl text-center text-secondary-200 border-b-2 border-secondary-200 ms:text-sm ">
           Blinkit for all your shopping.
         </p>
 
-        <form onSubmit={handleSubmit} className="grid gap-2 mt-6 ">
-          <div className="grid  gap-1  ">
+        <form onSubmit={handleSubmit} className="sm:flex sm:flex-col mt-6 ">
+          <div className="flex flex-col gap-2 w-full ">
             <label htmlFor="email">Email :</label>
             <input
               type="email"
@@ -106,7 +106,7 @@ const Login = () => {
             </div>
             <Link
               to={"/forgot-password"}
-              className="block ml-auto hover:text-secondary-200  "
+              className="text-xs sm:text-lg block ml-auto hover:text-secondary-200  "
             >
               Forgot password?
             </Link>
@@ -116,23 +116,26 @@ const Login = () => {
             disabled={!validData}
             className={`${
               validData
-                ? "bg-secondary-200 hover:bg-green-700  text-white py-2 rounded-sm font-semibold my-4"
-                : "bg-black  text-white py-2 rounded-sm font-semibold my-4 "
+                ? "bg-secondary-200 w-full hover:bg-green-700  text-white py-2 rounded-sm font-semibold my-4"
+                : "bg-black w-full text-white py-2 rounded-md font-semibold my-4 "
             }`}
           >
             Login
           </button>
         </form>
 
-        <p className="flex gap-1">
+       <div className="flex justify-between">
+       <Link to={"/register"} className="text-xs sm:text-lg flex gap-1">
           Don't have an account?{" "}
-          <Link
+          
+        </Link>
+        <Link
             to={"/register"}
-            className="font-semibold text-green-700 hover:text-secondary-200"
+            className="text-xs sm:text-lg font-semibold text-green-700 hover:text-secondary-200"
           >
             Sign Up
           </Link>
-        </p>
+       </div>
       </div>
     </section>
   );

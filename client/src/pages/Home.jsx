@@ -32,7 +32,7 @@ const Home = () => {
     <section className="bg-white ">
       <div className=" container mx-auto ">
         <div
-          className={`w-full h-full min-h-48 bg-blue-50 rounded ${
+          className={`w-full h-full sm:min-h-48 bg-blue-50 rounded ${
             !banner && "animate-ping my-2"
           } `}
         >
@@ -71,11 +71,11 @@ const Home = () => {
                     handleRedirectProductListPage(category._id, category.name)
                   }
                 >
-                  <div>
+                  <div className="">
                     <img
                       src={category.image}
                       alt={category.name}
-                      className="w-full h-full object-scale-down"
+                      className=" w-full h-full object-scale-down"
                     />
                   </div>
                 </div>

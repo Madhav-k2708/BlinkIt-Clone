@@ -9,7 +9,8 @@ const fetchUserDetails = async () => {
     });
     return response.data;
   } catch (error) {
-    AxiosToastError(error)
+    console.log(error.message)
+
   }
 };
 

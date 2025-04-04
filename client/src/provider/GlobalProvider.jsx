@@ -1,3 +1,4 @@
+import React, {memo} from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 import summaryApi from "../common/summaryApi";
 import Axios from "../utils/Axios";
@@ -33,7 +34,7 @@ const GlobalProvider = ({ children }) => {
         dispatch(handleAddItemCart(responseData.data));
       }
     } catch (error) {
-      AxiosToastError(error);
+      console.log(error.message)
     }
   };
 
@@ -87,7 +88,8 @@ const GlobalProvider = ({ children }) => {
         dispatch(handleAddAddress(responseData.data));
       }
     } catch (error) {
-      AxiosToastError(error);
+      console.log(error.message)
+      
     }
   };
 
@@ -101,7 +103,7 @@ const GlobalProvider = ({ children }) => {
         dispatch(setOrder(responseData.data));
       }
     } catch (error) {
-      AxiosToastError(error);
+      console.log(error.message);
     }
   };
 
@@ -156,4 +158,4 @@ const GlobalProvider = ({ children }) => {
   );
 };
 
-export default GlobalProvider;
+export default memo(GlobalProvider);

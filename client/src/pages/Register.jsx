@@ -66,12 +66,12 @@ const Register = () => {
   return (
     <section className="w-full container mx-auto mt-10 px-2 ">
       <div className="bg-white my-4 w-full max-w-lg mx-auto rounded p-10 ">
-        <p className="text-lg text-secondary-200 border-b-2 border-secondary-200 ">
+        <p className="text-lg text-center text-secondary-200 border-b-2 border-secondary-200 ">
           Welcome to Blinkit.
         </p>
 
-        <form onSubmit={handleSubmit} className="grid gap-2 mt-6 ">
-          <div className="grid gap-1  ">
+        <form onSubmit={handleSubmit} className="flex flex-col mt-6 ">
+          <div className="flex flex-col gap-1  ">
             <label htmlFor="name">Name :</label>
             <input
               type="text"
@@ -83,7 +83,7 @@ const Register = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="grid  gap-1  ">
+          <div className="flex flex-col gap-1  ">
             <label htmlFor="email">Email :</label>
             <input
               type="email"
@@ -94,7 +94,7 @@ const Register = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="grid gap-1 ">
+          <div className="flex flex-col gap-1 ">
             <label htmlFor="password">password :</label>
             <div className="bg-blue-50 p-2 border-2 rounded flex items-center focus-within:border-primary-200 ">
               <input
@@ -113,7 +113,7 @@ const Register = () => {
               </div>
             </div>
           </div>
-          <div className="grid  gap-1  ">
+          <div className="flex flex-col gap-1 ">
             <label htmlFor="confirmPassword">Confirm Password :</label>
             <div className="bg-blue-50 p-2 border-2 rounded flex items-center focus-within:border-primary-200 ">
               <input
@@ -144,15 +144,19 @@ const Register = () => {
             Register
           </button>
         </form>
-        <p className="flex gap-1">
+
+        <div className="flex flex-col text-center sm:flex-row justify-between items-center">
+        <Link to={"/login"} className="text-xs sm:text-lg flex gap-1">
           Already have an account?
-          <Link
+          
+        </Link>
+        <Link
             to={"/login"}
-            className="font-semibold text-green-700 hover:text-secondary-200"
+            className="text-xs sm:text-lg font-semibold text-green-700 hover:text-secondary-200"
           >
             Login
           </Link>
-        </p>
+        </div>
       </div>
     </section>
   );

@@ -38,8 +38,7 @@ const ProductDisplayPage = () => {
         setData(responseData.data);
       }
     } catch (error) {
-      AxiosToastError(error)
-    
+      AxiosToastError(error);
     } finally {
       setLoading(false);
     }
@@ -57,10 +56,10 @@ const ProductDisplayPage = () => {
   };
 
   return (
-    <section className="container mx-auto p-4 grid lg:grid-cols-2 ">
+    <section className="container mx-auto w-full p-4 flex flex-col lg:grid lg:grid-cols-2  bg-blue-50">
       {/*----Left side---------- */}
       <div className=" ">
-        <div className=" bg-white lg:min-h-[65vh] lg:max-h-[65vh] rounded min-h-56 max-h-56 h-full w-full ">
+        <div className=" p-4 flex items-center ">
           <img
             src={data.image[image]}
             alt="product image"
@@ -79,6 +78,7 @@ const ProductDisplayPage = () => {
             );
           })}
         </div>
+
         <div className="grid relative ">
           <div
             ref={imageContainer}
@@ -145,9 +145,12 @@ const ProductDisplayPage = () => {
               </p>
             )}
             {data.discount > 0 && (
-              <p className="lg:text-[15px] text-base font-bold text-green-600 ">(
-                {data.discount}%{" "}
-                <span className="text-base font-normal text-slate-800 ">off</span>)
+              <p className="lg:text-[15px] text-base font-bold text-green-600 ">
+                ({data.discount}%{" "}
+                <span className="text-base font-normal text-slate-800 ">
+                  off
+                </span>
+                )
               </p>
             )}
           </div>
@@ -161,20 +164,20 @@ const ProductDisplayPage = () => {
           //   Add to Cart
           // </button>
           <div className="my-5 ">
-          <AddToCart data={data} />
+            <AddToCart data={data} />
           </div>
         )}
 
         <h2 className="font-semibold ">Why shop from binkeyit?</h2>
         <div>
           <div
-            className="flex items-center gap-3 my-4
+            className="flex flex-col sm:flex-row flex-1 items-center sm:items-start gap-3 my-4
            "
           >
             <img
               src={Minute_Delivery}
               alt="superfast delivery"
-              className="w-20 h-20 "
+              className="w-20 h-20  "
             />
             <div className="text-sm ">
               <div className="font-semibold ">Superfast Delivery</div>
@@ -186,56 +189,54 @@ const ProductDisplayPage = () => {
           </div>
 
           <div>
-          <div
-            className="flex items-center gap-3 my-4
+            <div
+              className="flex flex-col sm:flex-row items-center sm:items-start gap-3 my-4
            "
-          >
-            <img
-              src={Best_Prices_Offers}
-              alt="Best Price Offers"
-              className="w-20 h-20 "
-            />
-            <div className="text-sm ">
-              <div className="font-semibold ">Best Prices & Offers</div>
-              <p>
-                Best price destination with offers directly from the
-                manufactures.
-              </p>
+            >
+              <img
+                src={Best_Prices_Offers}
+                alt="Best Price Offers"
+                className="w-20 h-20 "
+              />
+              <div className="text-sm ">
+                <div className="font-semibold ">Best Prices & Offers</div>
+                <p>
+                  Best price destination with offers directly from the
+                  manufactures.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div
+              className="flex flex-col sm:flex-row items-center sm:items-start gap-3 my-4"
+            >
+              <img
+                src={Wide_Assortment}
+                alt="Wide Assortment"
+                className="w-20 h-20 "
+              />
+              <div className="text-sm flex flex-col gap-1 ">
+                <div className="font-semibold ">Wide Assortment</div>
+                <p>
+                  Choose from 5000+ products across foor personal cate.
+                  household & other categories.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-
-        <div>
-          <div
-            className="flex items-center gap-3 my-4
-           "
-          >
-            <img
-              src={Wide_Assortment}
-              alt="Wide Assortment"
-              className="w-20 h-20 "
-            />
-            <div className="text-sm ">
-              <div className="font-semibold ">Wide Assortment</div>
-              <p>
-                Choose from 5000+ products across foor personal cate. household
-                & other categories.
-              </p>
-            </div>
-          </div>
-        </div>
-        </div>
-
       </div>
 
       {/* left side */}
-      <div className="my-4 flex flex-col gap-4 md:w-full min-w-72 lg:w-full lg:max-w-full">
-        <div className=" overflow-auto text-wrap break-words ">
+      <div className="my-4 flex flex-col gap-4 md:w-full min-w-32 lg:w-full lg:max-w-full">
+        <div className=" flex flex-col gap-1 overflow-x-hidden text-wrap break-words  ">
           <p className="font-semibold">Description</p>
-          <p className="text-base">{data.description}</p>
+          <p className="text-base  overflow-x-hidden text-wrap break-words ">{data.description}</p>
         </div>
 
-        <div>
+        <div className="flex flex-col gap-1">
           <p className="font-semibold">Unit</p>
           <p className="text-base">{data.unit}</p>
         </div>
@@ -243,14 +244,13 @@ const ProductDisplayPage = () => {
         {data?.more_details &&
           Object.keys(data?.more_details).map((el, index) => {
             return (
-              <div key={index} className="overflow-auto text-wrap break-words ">
+              <div key={index} className="flex flex-col gap-1 overflow-auto text-wrap break-words ">
                 <p className="font-semibold">{el}</p>
-                <p className="text-base">{data?.more_details[el]}</p>
+                <p className="text-base ">{data?.more_details[el]}</p>
               </div>
             );
           })}
       </div>
-      
     </section>
   );
 };
